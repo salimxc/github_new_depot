@@ -1,4 +1,15 @@
-<!doctype html> 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labyrithe</title>
+</head>
+<body>
+    
+</body>
+</html>
 
 <html>
 <head>
@@ -26,8 +37,8 @@
         b='b'; //représente le chemin
         f="f"; //représente le trophée 
 
-        var xperso=1; //position initial du personnage sur l'axe X
-        var yperso=1; //postition initial du personnage sur l'axe Y
+        var x=1; //position initial du personnage sur l'axe X
+        var y=1; //postition initial du personnage sur l'axe Y
         //tableau à double entrée représentant votre labyrinthe, vous pouvez le modifier pour comprendre le fonctionnement
         var laby = [[m,m,m,m,m,m,m,m,m,m],
                     [m,p,m,b,b,b,b,b,b,m],
@@ -90,75 +101,50 @@
         }
 
         
-        let v = 0
-        let z = 0
-        let r = 0
-        let t = 0
-        var position = yperso + v;
-        var position1 = yperso + t;
-        // let axex1 = 
+        var d = 0
+        var u = 0
+        var r = 0
+        var l = 0
+        
+       
+        function down(){
+            if (laby[y + 1][x] == f){alert("you Win")}
+            if (laby[y + 1][x] == b || laby[y + 1][x] == f){
+            y++
+            laby [y] [x] = p
+            laby [y - 1] [x] = b
+            afficheLaby()
+            } else{alert("T'es nul")}      
+        }
 
         function up(){
-            if (laby[position - (z + 1)][xperso] === b){
-            z++
-            laby[position - z][xperso] = p
-            laby[position - (z - 1)][xperso] = b
-            console.log("up");
+            if (laby[y - 1][x] == f){alert("you Win")}
+            if (laby[y - 1][x] == b || laby[y - 1][x] == f){
+            y--
+            laby [y] [x] = p
+            laby [y + 1] [x] = b
             afficheLaby()
-            console.log(position - z)
-            v--
-            }
-            else{
-                alert("TES NUL")
-            }
-            
+            } else{alert("T'es nul")}
         }
-        function down(){
-            if (laby[yperso + (v + 1)][xperso] === b){
-            v++
-            laby[yperso + v][xperso] = p
-            laby[v][xperso] = b
-            console.log("down");
-            afficheLaby()
-            position = yperso + v;
-            console.log(position)
-            if(z>0){z--}
+
+        function right(){
+            if (laby[y][x + 1] == f){alert("you Win")}
+            if (laby[y][x + 1] == b || laby[y][x + 1] == f){
+            x++
+            laby [y] [x] = p
+            laby [y] [x - 1] = b
+            afficheLaby() 
+            } else{alert("T'es nul")}
             
-            }
-            else{
-                alert("TES NUL")
-            }
         }
         function left(){
-            if (laby[position][xperso + (t + 1)] === b){
-            t++
-            laby[position][xperso + t] = p
-            laby[position][t] = b
-            console.log("down");
+            if (laby[y][x - 1] == f){alert("you Win")}
+            if (laby[y][x - 1] == b || laby[y][x - 1] == f){
+            x--
+            laby [y] [x] = p
+            laby [y] [x + 1] = b
             afficheLaby()
-            position1 = xperso + t;
-            console.log(position1)
-            if(r>0){r--}
-            
-            }
-            else{
-                alert("TES NUL")
-            }
-        }
-        function right(){
-            if (laby[position][position1 - (r + 1)] === b){
-            r++
-            laby[position][position1 - r] = p
-            laby[position][position1 - (r - 1)] = b
-            console.log("up");
-            afficheLaby()
-            console.log(position1 - r)
-            t--
-            }
-            else{
-                alert("TES NUL")
-            }
-            
+            } else{alert("T'es nul")}  
         }
 
         btn1.addEventListener("click", up)
@@ -169,7 +155,7 @@
         
 
 
-        
+        afficheLaby()
         
     </script>
 </body>
