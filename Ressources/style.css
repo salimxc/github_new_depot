@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#laby {
+    border: solid 17px rgb(116, 116, 116);
+    display: inline-block;
+    background-color: #333;
+    border-radius: 10px;
+}

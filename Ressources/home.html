@@ -4,20 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Labyrithe</title>
 </head>
-<body>
-    
-</body>
-</html>
-
-<html>
-<head>
-    <title>Labyrinthe</title>
-    <style>
-
-    </style>
-    
 </head>
     <body>
         <div id="laby">
@@ -100,52 +89,98 @@
             leLaby.innerHTML=insertion;
         }
 
-        
+        var bd = document.getElementById('laby')
         var d = 0
         var u = 0
         var r = 0
         var l = 0
-        
+       
+        function touches(e){
+            switch(e.code){
+                case "KeyS":
+                down();
+                break;
+                case "KeyW":
+                up();
+                break;
+                case "KeyD":
+                right();
+                break;
+                case "KeyA":
+                left();
+                break;
+            }
+        }
        
         function down(){
-            if (laby[y + 1][x] == f){alert("you Win")}
+            if (laby[y + 1][x] == f){
+                bd.style.borderColor = 'green';
+            }
+            if (laby[y + 1][x] == b){
+                bd.style.borderColor = 'rgb(116, 116, 116)';
+            }
             if (laby[y + 1][x] == b || laby[y + 1][x] == f){
-            y++
-            laby [y] [x] = p
-            laby [y - 1] [x] = b
-            afficheLaby()
-            } else{alert("T'es nul")}      
+                
+                y++
+                laby [y] [x] = p
+                laby [y - 1] [x] = b
+                afficheLaby()
+            } 
+            else{bd.style.borderColor = 'red';}      
         }
 
         function up(){
-            if (laby[y - 1][x] == f){alert("you Win")}
+            if (laby[y - 1][x] == f){
+                bd.style.borderColor = 'green';
+            }
+            if (laby[y - 1][x] == b){
+                bd.style.borderColor = 'rgb(116, 116, 116)';
+            }
             if (laby[y - 1][x] == b || laby[y - 1][x] == f){
-            y--
-            laby [y] [x] = p
-            laby [y + 1] [x] = b
-            afficheLaby()
-            } else{alert("T'es nul")}
+                y--
+                laby [y] [x] = p
+                laby [y + 1] [x] = b
+                afficheLaby()
+            } 
+            else{bd.style.borderColor = 'red';}
         }
 
         function right(){
-            if (laby[y][x + 1] == f){alert("you Win")}
+            if (laby[y][x + 1] == f){
+                bd.style.borderColor = 'green';
+            }
+            if (laby[y][x + 1] == b){
+                bd.style.borderColor = 'rgb(116, 116, 116)';
+            }
             if (laby[y][x + 1] == b || laby[y][x + 1] == f){
-            x++
-            laby [y] [x] = p
-            laby [y] [x - 1] = b
-            afficheLaby() 
-            } else{alert("T'es nul")}
+                x++
+                laby [y] [x] = p
+                laby [y] [x - 1] = b
+                afficheLaby() 
+            } 
+            else{bd.style.borderColor = 'red';}
+
             
         }
         function left(){
-            if (laby[y][x - 1] == f){alert("you Win")}
+            if (laby[y][x - 1] == f){
+                bd.style.borderColor = 'green';
+            }
+            if (laby[y][x - 1] == b){
+                bd.style.borderColor = bd.style.borderColor = 'rgb(116, 116, 116)';;
+            }
             if (laby[y][x - 1] == b || laby[y][x - 1] == f){
-            x--
-            laby [y] [x] = p
-            laby [y] [x + 1] = b
-            afficheLaby()
-            } else{alert("T'es nul")}  
+                x--
+                laby [y] [x] = p
+                laby [y] [x + 1] = b
+                afficheLaby()
+            } 
+            else{bd.style.borderColor = 'red';}  
         }
+        
+        window.addEventListener("keypress", touches)
+
+
 
         btn1.addEventListener("click", up)
         btn2.addEventListener("click", down)
